@@ -23,7 +23,7 @@ function creationDb(
     Id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Username VARCHAR(100) NOT NULL,
     Name VARCHAR(100) NOT NULL,
-    Password (10)
+    Password CHAR(72) NOT NULL
   )";
 
   $createTable2 =
@@ -57,4 +57,4 @@ function connexionDb(
 }
 
 creationDb("localhost", "root", "");
-$conn = connexionDb("localhost", "root", "", "S3");
+return connexionDb("localhost", "root", "", "S3");

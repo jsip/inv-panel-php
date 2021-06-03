@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = require_once('./utils/fnDB.php');
+require_once('./utils/fnDB.php');
 
 if (isset($_POST['submit'])) {
   if (isset($_POST['name'], $_POST['username'], $_POST['password']) && !empty($_POST['name']) && !empty($_POST['username']) && !empty($_POST['password'])) {
@@ -61,6 +61,7 @@ if (isset($_POST['submit'])) {
       $valPassword = $_POST['password'];
     }
   }
+  header('location:login.php');
 }
 ?>
 
@@ -73,7 +74,7 @@ if (isset($_POST['submit'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register</title>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <link rel="stylesheet" href="./assets/css/login.css">
+  <link rel="stylesheet" href="./assets/css/auth.css">
 </head>
 
 <body>

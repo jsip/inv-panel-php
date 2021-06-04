@@ -14,6 +14,9 @@ body {
 }
 
 main {
+  display: grid !important;
+  grid-template-columns: 0.8fr 0.2fr;
+  gap: 5rem;
   padding: 2rem;
 }
 

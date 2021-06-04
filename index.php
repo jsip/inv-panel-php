@@ -24,7 +24,7 @@ if (!$_SESSION['Username']) {
   require('./components/header.php');
   ?>
   <main>
-    <div class="" id="modalBlur">
+    <div class="leftContainer" id="modalBlur">
       <h3>Inventaire</h3><br>
       <table class="table">
         <thead>
@@ -47,8 +47,8 @@ if (!$_SESSION['Username']) {
               $resultat = $handler->fetchAll(PDO::FETCH_ASSOC);
               $i = 0;
               foreach ($resultat as $row) {
-              $i++;
-            ?>
+                $i++;
+          ?>
                 <tr>
                   <td> <?php echo $i ?> </td>
                   <td> <?php echo $row['Id']; ?></td>
@@ -60,7 +60,7 @@ if (!$_SESSION['Username']) {
                     <?php require('./components/deleteModal.php'); ?>
                   </td>
                 </tr>
-            <?php
+          <?php
               }
             } catch (PDOException $e) {
               $now = new DateTime();
@@ -73,11 +73,11 @@ if (!$_SESSION['Username']) {
         </thead>
       </table>
     </div>
-    <div>
+    <div class="rightContainer">
       <h3>Actions</h3><br>
       <div>
         <?php
-          require('./components/addModal.php');
+        require('./components/addModal.php');
         ?>
       </div>
     </div>

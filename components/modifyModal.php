@@ -4,6 +4,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .modal-backdrop {
+      opacity: 0.1 !important;
+    }
+  </style>
 </head>
 
 <?php
@@ -19,8 +24,8 @@
         </div>
         <div class="modal-body">
           <form method="POST" action="helpers/handlerModify.php" id="modalForm2">
-            <input type="text" name="nom" placeholder="Nom de l'item" id="nameItem" value="<?php echo $row['Nom']; ?>"><br><br>
-            <input type="number" name="montant" placeholder="Montant $" id="montantVal" value="<?php echo $row['Montant']; ?>">
+            <input type="text" value="" name="nom" id="nameItem" placeholder="<?php echo $row['Nom']; ?>"><br><br>
+            <input type="number" value="" name="montant" id="montantVal" placeholder="<?php echo $row['Montant']; ?>">
             <div class="modal-footer">
               <button class="btn btn-success" name="modify" type="submit" data-dismiss="modal" onclick="submitForm()">
                 Modifier

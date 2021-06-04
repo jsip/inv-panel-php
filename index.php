@@ -15,7 +15,7 @@ if (!$_SESSION['Username']) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Index</title>
-  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 
@@ -24,8 +24,8 @@ if (!$_SESSION['Username']) {
   require('./components/header.php');
   ?>
   <main>
-    <div>
-    <h3>Inventaire</h3><br>
+    <div class="" id="modalBlur">
+      <h3>Inventaire</h3><br>
       <table class="table">
         <thead>
           <tr>
@@ -47,25 +47,26 @@ if (!$_SESSION['Username']) {
               $resultat = $handler->fetchAll(PDO::FETCH_ASSOC);
               $i = 0;
               foreach ($resultat as $row) {
-                $i++;
-          ?>
-          <tr>
-            <td> <?php echo $i ?> </td>
-            <td> <?php echo $row['Id']; ?></td>
-            <td> <?php echo $row['Nom']; ?></td>
-            <td> $<?php echo $row['Montant']; ?></td>
-            <td> <?php echo $row['LastDate']; ?></td>
-            <td>
-              <a href="index.php?edit=<?php echo $row['Id']; ?>" class="btn btn-success">Modifier</a>
-              <a href="index.php?delete=<?php echo $row['Id']; ?>" class="btn btn-danger">Effacer</a>
-            </td>
-          </tr>
-          <?php
+              $i++;
+            ?>
+                <tr>
+                  <td> <?php echo $i ?> </td>
+                  <td> <?php echo $row['Id']; ?></td>
+                  <td> <?php echo $row['Nom']; ?></td>
+                  <td> $<?php echo $row['Montant']; ?></td>
+                  <td> <?php echo $row['LastDate']; ?></td>
+                  <td style="display: flex; gap: 1em;">
+                    <?php require('./components/modifyModal.php'); ?>
+                    <?php require('./components/deleteModal.php'); ?>
+                  </td>
+                </tr>
+            <?php
               }
             } catch (PDOException $e) {
               $now = new DateTime();
               echo "[" . $now->format('Y-m-d H:i:s') . "] - Erreur en relation au DB: " . $e->getMessage();
             }
+            return $resultat;
           }
           select("SELECT * FROM Produits");
           ?>
@@ -74,9 +75,11 @@ if (!$_SESSION['Username']) {
     </div>
     <div>
       <h3>Actions</h3><br>
-        <div>
-          <button class="btn btn-primary">Ajouter un Produit</button>
-        </div>
+      <div>
+        <?php
+          require('./components/addModal.php');
+        ?>
+      </div>
     </div>
   </main>
 </body>

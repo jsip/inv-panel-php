@@ -59,3 +59,4 @@ function connexionDb(
 
 creationDb("localhost", "root", "");
 $conn = connexionDb("localhost", "root", "", "S3");
+return $conn;

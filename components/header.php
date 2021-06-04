@@ -3,7 +3,7 @@
 </head>
 <header>
   <div>
-    <h4>Bonjour, <?php echo ucfirst($_SESSION['Name']); ?></h4>
+    <h2>Bonjour, <?php echo ucfirst($_SESSION['Name']); ?></h2>
   </div>  
   <div>
     <a href="./utils/logout.php">Logout</a>

@@ -27,7 +27,7 @@
             <input type="text" value="" name="nom" id="nameItem" placeholder="<?php echo $row['Nom']; ?>"><br><br>
             <input type="number" value="" name="montant" id="montantVal" placeholder="<?php echo $row['Montant']; ?>">
             <div class="modal-footer">
-              <button class="btn btn-success" name="modify" type="submit" data-dismiss="modal" onclick="submitForm()">
+              <button class="btn btn-success" name="modifier" type="submit" data-dismiss="modal" onclick="submitForm()">
                 Modifier
               </button>
             </div>
